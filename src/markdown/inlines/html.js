@@ -46,7 +46,9 @@ const serialize = Serializer()
     .matchType(INLINES.HTML)
     .then(state => {
         const node = state.peek();
-        return node.shift().write(node.text);
+        return state
+            .shift()
+            .write(node.data.get('html'));
     });
 
 /**
