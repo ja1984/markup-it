@@ -39,6 +39,38 @@ function createHTML(html) {
 }
 
 /**
+ * Merge consecutive HTML nodes.
+ * @param  {List<Node>} nodes
+ * @return {List<Node>} nodes
+ */
+function mergeHTMLNodes(nodes) {
+    const result = nodes.reduce(
+        (accu, node) => {
+            let last = accu.length > 0 ? accu[accu.length - 1] : null;
+
+            if (last && node.type == INLINES.HTML && last.type == node.type) {
+                last = last.merge({
+                    data: last.data.set(
+                        'html',
+                        last.data.get('html') + node.data.get('html')
+                    )
+                });
+
+                accu.shift();
+                accu.push(last);
+
+                return accu;
+            }
+
+            return accu.concat([ node ]);
+        },
+        []
+    );
+
+    return List(result);
+}
+
+/**
  * Serialize an HTML node to markdown
  * @type {Serializer}
  */
@@ -86,6 +118,8 @@ const deserialize = Deserializer()
         if (endTag) {
             nodes = nodes.push(createHTML(endTag));
         }
+
+        nodes = mergeHTMLNodes(nodes);
 
         return state.push(nodes);
     });
