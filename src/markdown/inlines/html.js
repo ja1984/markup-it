@@ -1,5 +1,5 @@
 const { List } = require('immutable');
-const { Serializer, Deserializer, Inline, INLINES } = require('../../');
+const { Serializer, Deserializer, Inline, Text, INLINES } = require('../../');
 const reInline = require('../re/inline');
 
 // List of valid html blocks names, accorting to commonmark spec
@@ -33,8 +33,9 @@ function isHTMLBlock(tag) {
 function createHTML(html) {
     return Inline.create({
         type: INLINES.HTML,
-        isVoid: true,
-        data: { html }
+        nodes: new List([
+            Text.createFromString(html)
+        ])
     });
 }
 
@@ -46,18 +47,20 @@ function createHTML(html) {
 function mergeHTMLNodes(nodes) {
     const result = nodes.reduce(
         (accu, node) => {
-            let last = accu.length > 0 ? accu[accu.length - 1] : null;
+            const last = accu.length > 0 ? accu[accu.length - 1] : null;
 
             if (last && node.type == INLINES.HTML && last.type == node.type) {
-                last = last.merge({
-                    data: last.data.set(
-                        'html',
-                        last.data.get('html') + node.data.get('html')
-                    )
-                });
+                const previousHtmlText = last.nodes.first();
+                const nodeHtml = node.text;
+                const mergedHtml = previousHtmlText.insertText(previousHtmlText.length, nodeHtml);
+
+                node = node.set(
+                    'nodes',
+                    node.nodes.set(0, mergedHtml)
+                );
 
                 accu.shift();
-                accu.push(last);
+                accu.push(node);
 
                 return accu;
             }

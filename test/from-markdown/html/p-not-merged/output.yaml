@@ -5,16 +5,16 @@ nodes:
       - kind: text
         text: ""
       - kind: inline
-        isVoid: true
         type: html
-        data:
-          html: "<p>Hello</p>"
+        nodes:
+          - kind: text
+            text: "<p>Hello</p>"
       - kind: text
         text: " World "
       - kind: inline
-        isVoid: true
         type: html
-        data:
-          html: "<p>!</p>"
+        nodes:
+          - kind: text
+            text: "<p>!</p>"
       - kind: text
         text: ""
