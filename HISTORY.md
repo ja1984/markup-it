@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### 3.4.0
+
+- Improve Asciidoc and HTML deserialization by applying basic normalization (with Slate's core schema).
+
 ### 3.3.7
 
 - Now supporting deserialization of URI encoded links.
