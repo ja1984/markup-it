@@ -2,6 +2,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### Unreleased
+
+### 3.4.1
+
+- Fix parsing of empty fences block
+
 ### 3.4.0
 
 - Improve Asciidoc and HTML deserialization by applying basic normalization (with Slate's core schema).
