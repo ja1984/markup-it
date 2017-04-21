@@ -6,7 +6,7 @@ const { List, Stack, Set } = require('immutable');
 const { Document } = require('slate');
 const { Deserializer } = require('../');
 const {
-    BLOCKS, INLINES, MARKS, CONTAINERS, VOID,
+    BLOCKS, INLINES, MARKS, CONTAINERS, VOID, LEAFS,
     Block, Inline, Text, Mark
 } = require('../');
 
@@ -52,6 +52,7 @@ const BLOCK_TAGS = {
 
     table:          BLOCKS.TABLE,
     tr:             BLOCKS.TABLE_ROW,
+    th:             BLOCKS.TABLE_CELL,
     td:             BLOCKS.TABLE_CELL,
 
     ul:             BLOCKS.UL_LIST,
@@ -142,6 +143,39 @@ function getMarksForClassName(className) {
 }
 
 /**
+ * Returns the accepted block types for the given container
+ */
+function acceptedBlocks(container) {
+    return CONTAINERS[container.type || container.kind];
+}
+
+/**
+ * True if the node is a block container node
+ */
+function isBlockContainer(node) {
+    return Boolean(acceptedBlocks(node));
+}
+
+/**
+ * Returns the default block type for a block container
+ */
+function defaultBlockType(container) {
+    return acceptedBlocks(container)[0];
+}
+
+/**
+ * True if `block` can contain `node`
+ */
+function canContain(block, node) {
+    if (node.kind === 'inline' || node.kind === 'text') {
+        return LEAFS[block.type];
+    } else {
+        const types = acceptedBlocks(block);
+        return types && types.indexOf(node.type) !== -1;
+    }
+}
+
+/**
  * Parse an HTML string into a list of Nodes
  * @param {String} str
  * @return {List<Node>}
@@ -163,28 +197,35 @@ function parse(str) {
     // Append a node child to the current parent node
     function appendNode(node) {
         const parent = stack.peek();
-        const containerChildTypes = CONTAINERS[parent.type || parent.kind];
         let { nodes } = parent;
 
         // If parent is not a block container
-        if (!containerChildTypes && node.kind == 'block') {
+        if (!isBlockContainer(parent) && node.kind == 'block') {
             // Discard all blocks
             nodes = nodes.concat(selectInlines(node));
         }
 
         // Wrap node if type is not allowed
         else if (
-            containerChildTypes
-            && (node.kind !== 'block' || !containerChildTypes.includes(node.type))
+            isBlockContainer(parent)
+            && (node.kind !== 'block' || !canContain(parent, node))
         ) {
-            node = Block.create({
-                type: containerChildTypes[0],
-                nodes: [node]
-            });
+            const previous = parent.nodes.last();
+            if (previous && canContain(previous, node)) {
+                // Reuse previous block is possible
+                nodes = nodes.pop().push(
+                    previous.set('nodes', previous.nodes.push(node))
+                );
+            } else {
+                // Else insert a default wrapper
+                node = Block.create({
+                    type: defaultBlockType(parent),
+                    nodes: [node]
+                });
 
-            nodes = nodes.push(node);
+                nodes = nodes.push(node);
+            }
         }
-
         else {
             nodes = nodes.push(node);
         }
@@ -244,6 +285,7 @@ function parse(str) {
                 const textNode = Text.createFromString('\n', marks);
                 appendNode(textNode);
             }
+            // else ignore
 
             // Parse marks from the class name
             const newMarks = getMarksForClassName(attribs['class']);
@@ -251,9 +293,6 @@ function parse(str) {
         },
 
         ontext(text) {
-            const isEmptyText = !text.trim();
-            if (isEmptyText) return;
-
             // Special rule for code blocks that we must split in lines
             if (stack.peek().type === BLOCKS.CODE) {
                 splitLines(text).forEach(line => {
