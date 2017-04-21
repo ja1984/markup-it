@@ -2,6 +2,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+### 3.5.0
+
+- Improve HTML deserialization by reusing nodes wrappers instead of wrapping invalid nodes individually,
+
 ### 3.4.2
 
 - Fix parsing of ill-encoded URIs
