@@ -285,7 +285,10 @@ function parse(str) {
             }
 
             else if (tagName == 'br') {
-                const textNode = Text.createFromString('\n', marks);
+                const textNode = Text.create({
+                    text: '\n',
+                    marks
+                });
                 appendNode(textNode);
             }
             // else ignore
@@ -296,7 +299,7 @@ function parse(str) {
         },
 
         ontext(text) {
-            const textNode = Text.createFromString(text, marks);
+            const textNode = Text.create({ text, marks });
             appendNode(textNode);
         },
 
@@ -316,7 +319,7 @@ function parse(str) {
                             // Create a code line
                             return Block.create({
                                 type: BLOCKS.CODE_LINE,
-                                nodes: [Text.createFromString(line)]
+                                nodes: [Text.create(line)]
                             });
                         })
                     }));
