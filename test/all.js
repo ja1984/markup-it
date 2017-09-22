@@ -23,7 +23,7 @@ function readFileInput(filePath) {
         const parser = MarkupIt.State.create(syntax);
         const document = parser.deserializeToDocument(content);
         const state = Slate.State.create({ document });
-        return Slate.Raw.serialize(state, { terse: true });
+        return state.toJSON();
     }
 
     switch (ext) {
@@ -34,7 +34,7 @@ function readFileInput(filePath) {
     case '.adoc':
         return deserializeWith(asciidoc);
     case '.yaml':
-        return readYaml(filePath);
+        return Slate.State.fromJSON(readYaml(filePath)).toJSON();
     }
 }
 
@@ -48,7 +48,7 @@ function convertFor(input, outputExt) {
 
     function serializeWith(syntax) {
         const parser = MarkupIt.State.create(syntax);
-        const inputDocument = Slate.Raw.deserialize(input, { terse: true }).document;
+        const inputDocument = Slate.State.fromJSON(input).document;
         const out = parser.serializeDocument(inputDocument);
 
         // Trim to avoid newlines being compared at the end
@@ -83,7 +83,7 @@ function readFileOutput(fileName) {
         // We trim to avoid newlines being compared at the end
         return trimTrailingLines(content);
     case '.yaml':
-        return readYaml(fileName);
+        return Slate.State.fromJSON(readYaml(fileName)).toJSON();
     }
 }
 

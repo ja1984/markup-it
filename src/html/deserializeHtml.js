@@ -10,6 +10,40 @@ const {
     Block, Inline, Text, Mark
 } = require('../');
 
+const SCHEMA_NO_EXTRA_TEXT = {
+    rules: [
+
+        /**
+        * Remove empty text nodes, except if they are only child. Copied from slate's
+        */
+        {
+            match: (object) => {
+                return object.kind == 'block' || object.kind == 'inline';
+            },
+            validate: (node) => {
+                const { nodes } = node;
+                if (nodes.size <= 1) return;
+
+                const invalids = nodes.filter((desc, i) => {
+                    if (desc.kind != 'text') return;
+                    if (desc.text.length > 0) return;
+                    return true;
+                });
+
+                return invalids.size ? invalids : null;
+
+            },
+            normalize: (change, node, invalids) => {
+                // Reverse the list to handle consecutive merges, since the earlier nodes
+                // will always exist after each merge.
+                invalids.forEach((n) => {
+                    change.removeNodeByKey(n.key, { normalize: false });
+                });
+            }
+        }
+    ]
+};
+
 /**
  * Deserialize an HTML string
  * @type {Deserializer}
@@ -18,15 +52,17 @@ const deserialize = Deserializer()
 .then((state) => {
     const nodes = parse(state.text);
 
-    // Normalize the document, since for now HTML introduces a lot of
-    // unwanted empty text nodes.
-    const normalizedNodes = Slate
-        .State.create({
-            document: Slate.Document.create({ nodes })
-        }, {
-            normalize: true
-        })
-        .document.nodes;
+    const slateState = Slate
+    .State.fromJSON({
+        document: { nodes }
+    }, {
+        normalize: false
+    });
+
+    // Remove first extra empty text nodes, since for now HTML introduces a lot of them
+    const noExtraEmptyText = slateState.change().normalize(Slate.Schema.create(SCHEMA_NO_EXTRA_TEXT)).state;
+    // Then normalize it using Slate's core schema.
+    const normalizedNodes = Slate.State.fromJSON(noExtraEmptyText.toJSON()).document.nodes;
 
     return state
         .push(normalizedNodes)
@@ -285,7 +321,10 @@ function parse(str) {
             }
 
             else if (tagName == 'br') {
-                const textNode = Text.createFromString('\n', marks);
+                const textNode = Text.create({
+                    text: '\n',
+                    marks
+                });
                 appendNode(textNode);
             }
             // else ignore
@@ -297,7 +336,7 @@ function parse(str) {
 
         ontext(text) {
             const cleanText = sanitizeSpaces(text);
-            const textNode = Text.createFromString(cleanText, marks);
+            const textNode = Text.create({ text: cleanText, marks });
             appendNode(textNode);
         },
 
@@ -317,7 +356,7 @@ function parse(str) {
                             // Create a code line
                             return Block.create({
                                 type: BLOCKS.CODE_LINE,
-                                nodes: [Text.createFromString(line)]
+                                nodes: [Text.create(line)]
                             });
                         })
                     }));
