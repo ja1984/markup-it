@@ -9,11 +9,11 @@ document:
             - text: Dub Incorporation
               marks:
                 - type: BOLD
-            - text: "\_(since 2006 just\_"
+            - text: " (since 2006 just "
             - text: Dub Inc
               marks:
                 - type: BOLD
-            - text: ") is a\_"
+            - text: ") is a "
         - kind: inline
           type: link
           data:

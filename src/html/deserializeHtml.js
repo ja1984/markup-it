@@ -299,7 +299,8 @@ function parse(str) {
         },
 
         ontext(text) {
-            const textNode = Text.create({ text, marks });
+            const cleanText = sanitizeSpaces(text);
+            const textNode = Text.create({ text: cleanText, marks });
             appendNode(textNode);
         },
 
@@ -348,6 +349,17 @@ function parse(str) {
 
     const rootNodes = stack.peek().nodes;
     return List(rootNodes);
+}
+
+/*
+ * sanitizeSpaces replace non-breaking spaces with regular space
+ * non-breaking spaces (aka &nbsp;) are sources of many problems & quirks
+ * &nbsp; in ascii is `0xA0` or `0xC2A0` in utf8
+ * @param {String} str
+ * @return {String}
+ */
+function sanitizeSpaces(str) {
+    return str.replace(/\xa0/g, ' ');
 }
 
 /**
