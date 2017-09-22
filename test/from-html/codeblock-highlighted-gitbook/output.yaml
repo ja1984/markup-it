@@ -7,94 +7,113 @@ nodes:
         type: code_line
         nodes:
           - kind: text
-            text: "using Starcounter;"
+            ranges:
+              - text: "using Starcounter;"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: ""
+            ranges:
+              - text: ""
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "namespace HelloWorld"
+            ranges:
+              - text: "namespace HelloWorld"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "{"
+            ranges:
+              - text: "{"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "    [Database]"
+            ranges:
+              - text: "    [Database]"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "    public class Person"
+            ranges:
+              - text: "    public class Person"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "    {"
+            ranges:
+              - text: "    {"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "        public string FirstName;"
+            ranges:
+              - text: "        public string FirstName;"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "        public string LastName;"
+            ranges:
+              - text: "        public string LastName;"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "    }"
+            ranges:
+              - text: "    }"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: ""
+            ranges:
+              - text: ""
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "    class Program"
+            ranges:
+              - text: "    class Program"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "    {"
+            ranges:
+              - text: "    {"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "        static void Main()"
+            ranges:
+              - text: "        static void Main()"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "        {"
+            ranges:
+              - text: "        {"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: ""
+            ranges:
+              - text: ""
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "        }"
+            ranges:
+              - text: "        }"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "    }"
+            ranges:
+              - text: "    }"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "}"
+            ranges:
+              - text: "}"

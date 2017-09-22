@@ -6,14 +6,17 @@ nodes:
         type: code_line
         nodes:
           - kind: text
-            text: "Some code"
+            ranges:
+                - text: "Some code"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "    indented 4 spaces"
+            ranges:
+                - text: "    indented 4 spaces"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "end code"
+            ranges:
+                - text: "end code"

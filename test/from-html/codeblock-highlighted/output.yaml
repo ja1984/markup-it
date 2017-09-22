@@ -6,19 +6,23 @@ nodes:
         type: code_line
         nodes:
           - kind: text
-            text: "foreach (Employee emp in result)"
+            ranges:
+                - text: "foreach (Employee emp in result)"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "{"
+            ranges:
+                - text: "{"
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: '  Console.WriteLine(emp.FirstName + " " + emp.LastName);'
+            ranges:
+                - text: '  Console.WriteLine(emp.FirstName + " " + emp.LastName);'
       - kind: block
         type: code_line
         nodes:
           - kind: text
-            text: "}"
+            ranges:
+                - text: "}"
