@@ -23,7 +23,7 @@ function readFileInput(filePath) {
         const parser = MarkupIt.State.create(syntax);
         const document = parser.deserializeToDocument(content);
         const state = Slate.State.create({ document });
-        return Slate.Raw.serialize(state, { terse: true });
+        return state.toJSON();
     }
 
     switch (ext) {
@@ -48,7 +48,7 @@ function convertFor(input, outputExt) {
 
     function serializeWith(syntax) {
         const parser = MarkupIt.State.create(syntax);
-        const inputDocument = Slate.Raw.deserialize(input, { terse: true }).document;
+        const inputDocument = Slate.State.fromJSON(input).document;
         const out = parser.serializeDocument(inputDocument);
 
         // Trim to avoid newlines being compared at the end
