@@ -34,7 +34,7 @@ function readFileInput(filePath) {
     case '.adoc':
         return deserializeWith(asciidoc);
     case '.yaml':
-        return readYaml(filePath);
+        return Slate.State.fromJSON(readYaml(filePath)).toJSON();
     }
 }
 
@@ -83,7 +83,7 @@ function readFileOutput(fileName) {
         // We trim to avoid newlines being compared at the end
         return trimTrailingLines(content);
     case '.yaml':
-        return readYaml(fileName);
+        return Slate.State.fromJSON(readYaml(fileName)).toJSON();
     }
 }
 
