@@ -33,6 +33,7 @@ const URL_REPLACEMENTS_UNESCAPE = REPLACEMENTS_UNESCAPE.merge({
     ' ': '%20'
 });
 const URL_REPLACEMENTS_ESCAPE = Map([
+    [ ' ', '%20' ],
     [ '(', '%28' ],
     [ ')', '%29' ]
 ]);
