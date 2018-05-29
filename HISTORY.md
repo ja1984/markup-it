@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+### 8.0.3
+
+- Fix serialization and deserialization for JSON strings containing escaped characters
+
 ### 8.0.2
 
 - Fix serialization of bold or italic to not wrap spaces (`**bold** text` instead of `**bold **text`)
