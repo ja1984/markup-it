@@ -1,0 +1,19 @@
+document:
+  nodes:
+    - object: block
+      type: paragraph
+      nodes:
+        - object: text
+          leaves:
+            - text: ''
+        - object: inline
+          type: image
+          data:
+            alt: foo
+            src: /url
+            title: title
+            align: left
+          isVoid: true
+        - object: text
+          leaves:
+            - text: ''

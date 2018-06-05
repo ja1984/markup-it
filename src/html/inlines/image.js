@@ -10,9 +10,13 @@ const serialize = Serializer()
     .then(serializeTag('img', {
         isSingleTag: true,
         getAttrs: (node) => {
+            const align = node.data.get('align');
+            const style = align ? { style: `margin: ${align === 'left' ? 0 : 'auto'};` } : {};
+
             return {
                 src: node.data.get('src'),
-                alt: node.data.get('alt')
+                alt: node.data.get('alt'),
+                ...style
             };
         }
     }));

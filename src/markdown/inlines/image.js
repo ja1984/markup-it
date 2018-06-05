@@ -40,20 +40,32 @@ const serialize = Serializer()
     .matchType(INLINES.IMAGE)
     .then((state) => {
         const node = state.peek();
-        const { data } = node;
+        const {data} = node;
 
         // Escape the url
         const src = utils.escapeURL(data.get('src') || '');
 
         const alt = utils.escape(data.get('alt') || '');
         const title = utils.escape(data.get('title') || '');
+        const align = utils.escape(data.get('align') || '');
 
         let output;
+        const serializeAsHtml = Boolean(align);
 
-        if (title) {
-            output = `![${alt}](${src} "${title}")`;
+        if (serializeAsHtml) {
+            const attributes = [
+                `src="${src}"`,
+                title && `title="${title}"`,
+                align && `style="margin: ${align};"`
+            ].filter(Boolean).join(' ');
+
+            output = `<img ${attributes} />`;
         } else {
-            output = `![${alt}](${src})`;
+            if (title) {
+                output = `![${alt}](${src} "${title}")`;
+            } else {
+                output = `![${alt}](${src})`;
+            }
         }
 
         return state

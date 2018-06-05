@@ -32,3 +32,6 @@ lib
 
 # Test file for dev
 test.md
+
+# IDE data
+.idea
