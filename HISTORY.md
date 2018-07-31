@@ -5,6 +5,8 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+### 9.0.0
+
 - Rename table aligns data from `align` to `aligns`
 
 ### 8.1.3
