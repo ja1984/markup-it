@@ -5,6 +5,12 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+### 10.0.0
+
+- [BREAKING] Now using ES6 import/export syntax
+- [BREAKING] The Markdown parser now parses HTML chunks, and will no longer yield HTML blocks.
+- The serialized HTML is now prettified
+
 ### 9.0.0
 
 - Rename table aligns data from `align` to `aligns`
