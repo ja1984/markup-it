@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+#### 11.0.0
+
+[BREAKING] Now using @gitbook/slate as peer dependency
+
 ### 10.0.0
 
 - [BREAKING] Now using ES6 import/export syntax
