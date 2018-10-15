@@ -5,6 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+
+#### 11.1.1
+
+- Use `<a id="custom"></a>` as the default syntax for serializing custom anchors in Markdown headings
+- Correctly escape HTML attributes when serializing to HTML
+- Set package version to have only 1 in it ;)
+
 #### 11.1.0
 
 - Correctly parse inline HTML as well in Markdown.
