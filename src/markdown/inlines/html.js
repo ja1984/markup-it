@@ -1,4 +1,14 @@
-import { Serializer, Deserializer, Inline, INLINES } from '../../';
+import htmlparser from 'htmlparser2';
+import { List } from 'immutable';
+import {
+    State,
+    Serializer,
+    Deserializer,
+    Inline,
+    INLINES,
+    BLOCKS
+} from '../../';
+import HTMLParser from '../../html';
 import reInline from '../re/inline';
 import HTML_BLOCKS from './HTML_BLOCKS';
 
@@ -42,6 +52,29 @@ function createHTML(opts) {
         data: { openingTag, closingTag },
         nodes
     });
+}
+
+/**
+ * Deserialize inline HTML
+ * @param {String} html
+ * @return {List<Node>} parsed nodes
+ */
+function deserializeHtml(html) {
+    const htmlParser = State.create(HTMLParser);
+    const document = htmlParser.deserializeToDocument(html);
+    const firstNode = document.nodes.first();
+    const isEmpty =
+        !firstNode ||
+        (document.nodes.size === 1 &&
+            firstNode.type === BLOCKS.PARAGRAPH &&
+            firstNode.nodes.every(child => !child.isVoid) &&
+            firstNode.text === '');
+
+    if (isEmpty) {
+        return List();
+    }
+
+    return firstNode.nodes;
 }
 
 /**
@@ -94,32 +127,69 @@ const deserializePair = Deserializer().matchRegExp(
         const openingTag = `<${tagName}${attributes}>`;
         const closingTag = fullTag.slice(openingTag.length + innerHtml.length);
 
-        if (isHTMLBlock(tagName)) {
-            // Do not parse inner HTML
-            return state.push(
-                createRawHTML({
+        // Finish parsing the inside of the HTML as Markdown
+        const htmlNode = (() => {
+            if (isHTMLBlock(tagName)) {
+                // Do not parse inner HTML
+                return createRawHTML({
                     openingTag,
                     closingTag,
                     innerHtml
-                })
-            );
-        }
-        // Parse inner HTML
-        const isLink = tagName.toLowerCase() === 'a';
+                });
+            }
+            // else parse inner HTML as Markdown
 
-        const innerNodes = state
-            .setProp(isLink ? 'link' : 'html', state.depth)
-            .deserialize(innerHtml);
+            const isLink = tagName.toLowerCase() === 'a';
+            const innerNodes = state
+                .setProp(isLink ? 'link' : 'html', state.depth)
+                .deserialize(innerHtml);
 
-        return state.push(
-            createHTML({
+            return createHTML({
                 openingTag,
                 closingTag,
                 nodes: innerNodes
-            })
+            });
+        })();
+
+        // Now convert everything back to HTML and interpret the whole
+        // (we got rid of any Markdown)
+        const htmlParser = State.create(HTMLParser);
+        const htmlOnly = htmlParser.use('block').serializeNode(htmlNode);
+
+        return (
+            state
+                // If we have found an anchor, store it so it is attached to the next heading
+                .setProp('lastAnchorId', findHtmlAnchor(htmlOnly))
+                .push(deserializeHtml(htmlOnly))
         );
     }
 );
+
+/**
+ * Look for <a id="..."></a>, often used to
+ * add custom anchors to Markdown headings.
+ * @param {String} html
+ * @return {String | Null} id of the anchor found
+ */
+function findHtmlAnchor(html) {
+    let anchorId = null;
+
+    const parser = new htmlparser.Parser(
+        {
+            onopentag(tagName, attribs) {
+                if (tagName.toLowerCase() === 'a' && attribs.id) {
+                    // This is an anchor with an ID
+                    anchorId = attribs.id;
+                }
+            }
+        },
+        { decodeEntities: true }
+    );
+    parser.write(html);
+    parser.end();
+
+    return anchorId;
+}
 
 /**
  * Deserialize HTML self closing tag from markdown
@@ -128,8 +198,8 @@ const deserializePair = Deserializer().matchRegExp(
 const deserializeClosing = Deserializer().matchRegExp(
     reInline.htmlSelfClosingTag,
     (state, match) => {
-        const [openingTag] = match;
-        return state.push(createRawHTML({ openingTag }));
+        const [selfClosingHtml] = match;
+        return state.push(deserializeHtml(selfClosingHtml));
     }
 );
 
