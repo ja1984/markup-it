@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+#### 11.1.3
+
+- Fix yarn warning for immutqble peer dependency
+
 #### 11.1.2
 
 - Markup-it is now tested with `immutable@4.0.0`
