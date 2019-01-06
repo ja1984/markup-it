@@ -78,9 +78,9 @@
     lodash "^4.2.0"
     to-fast-properties "^2.0.0"
 
-"@gitbook/slate-dev-logger@^0.1.39":
-  version "0.1.39"
-  resolved "https://registry.yarnpkg.com/@gitbook/slate-dev-logger/-/slate-dev-logger-0.1.39.tgz#86cb39b8c535a480d31ab3636007911b6f7a3742"
+"@gitbook/slate-dev-logger@^0.1.40":
+  version "0.1.40"
+  resolved "https://registry.yarnpkg.com/@gitbook/slate-dev-logger/-/slate-dev-logger-0.1.40.tgz#960ede184272329eb977a11aa6a601621c8b7a6d"
 
 "@gitbook/slate-hyperprint@^2.2.5":
   version "2.2.6"
@@ -93,27 +93,28 @@
     prettier "1.13.6"
     stringify-object "^3.2.2"
 
-"@gitbook/slate-hyperscript@^0.5.22":
-  version "0.5.22"
-  resolved "https://registry.yarnpkg.com/@gitbook/slate-hyperscript/-/slate-hyperscript-0.5.22.tgz#b7fb270296852d961408840dd605cc0cdd156e19"
+"@gitbook/slate-hyperscript@^0.5.26":
+  version "0.5.26"
+  resolved "https://registry.yarnpkg.com/@gitbook/slate-hyperscript/-/slate-hyperscript-0.5.26.tgz#bff629c4130c477670bd6dcf840f65b299df3eea"
   dependencies:
-    "@gitbook/slate-dev-logger" "^0.1.39"
+    "@gitbook/slate-dev-logger" "^0.1.40"
     is-empty "^1.0.0"
     is-plain-object "^2.0.4"
 
-"@gitbook/slate-schema-violations@^0.1.20":
-  version "0.1.20"
-  resolved "https://registry.yarnpkg.com/@gitbook/slate-schema-violations/-/slate-schema-violations-0.1.20.tgz#1e799757b79472a15938f05cd90923ea6750388b"
+"@gitbook/slate-schema-violations@^0.1.24":
+  version "0.1.24"
+  resolved "https://registry.yarnpkg.com/@gitbook/slate-schema-violations/-/slate-schema-violations-0.1.24.tgz#ab7d9f793d2943102b8c8014b9e71ab826a47ba6"
 
-"@gitbook/slate@^0.34.7":
-  version "0.34.7"
-  resolved "https://registry.yarnpkg.com/@gitbook/slate/-/slate-0.34.7.tgz#ecc0ddeac9d5e8380fb4b93e1b47306d139504ba"
+"@gitbook/slate@^0.34.11":
+  version "0.34.11"
+  resolved "https://registry.yarnpkg.com/@gitbook/slate/-/slate-0.34.11.tgz#dd20daa77510c581e4b12928f48ff70beb25848b"
   dependencies:
-    "@gitbook/slate-dev-logger" "^0.1.39"
-    "@gitbook/slate-schema-violations" "^0.1.20"
+    "@gitbook/slate-dev-logger" "^0.1.40"
+    "@gitbook/slate-schema-violations" "^0.1.24"
     debug "^3.1.0"
     direction "^0.1.5"
     esrever "^0.2.0"
+    immutablejs-record-memoize "^1.0.1"
     is-empty "^1.0.0"
     is-plain-object "^2.0.4"
     lodash "^4.17.4"
@@ -2082,9 +2083,13 @@ ignore@^3.3.3:
   version "3.3.10"
   resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.10.tgz#0a97fb876986e8081c631160f8f9f389157f0043"
 
-immutable@^3.8.1:
-  version "3.8.2"
-  resolved "https://registry.yarnpkg.com/immutable/-/immutable-3.8.2.tgz#c2439951455bb39913daf281376f1530e104adf3"
+immutable@^4.0.0-rc.12:
+  version "4.0.0-rc.12"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.0.0-rc.12.tgz#ca59a7e4c19ae8d9bf74a97bdf0f6e2f2a5d0217"
+
+immutablejs-record-memoize@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/immutablejs-record-memoize/-/immutablejs-record-memoize-1.0.1.tgz#668ebe616f2bd743ce890321fa451f0c791dadce"
 
 imurmurhash@^0.1.4:
   version "0.1.4"
