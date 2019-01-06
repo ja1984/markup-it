@@ -5,6 +5,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+#### 11.1.2
+
+- Markup-it is now tested with `immutable@4.0.0`
 
 #### 11.1.1
 
