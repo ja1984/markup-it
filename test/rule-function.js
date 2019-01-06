@@ -6,11 +6,7 @@ describe('RuleFunction', () => {
     describe('.compose()', () => {
         it('should return a new RuleFunction', () => {
             const ruleFunction = new RuleFunction();
-            const composed = ruleFunction.compose((fn) => {
-                return () => {
-                    return fn();
-                }
-            });
+            const composed = ruleFunction.compose(fn => () => fn());
 
             expect(composed).toNotBe(ruleFunction);
             expect(composed).toBeA(RuleFunction);
