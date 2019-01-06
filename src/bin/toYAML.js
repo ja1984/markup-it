@@ -8,7 +8,7 @@ import { transform } from './helper';
 
 transform(document => {
     const state = Value.create({ document });
-    const raw = state.toJSON();
+    const raw = state.toJS();
 
     console.log(yaml.safeDump(raw));
 });
