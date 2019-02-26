@@ -5,9 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+#### 11.1.4
+
+- Escape HTML entities when serializing text to HTML
+
 #### 11.1.3
 
-- Fix yarn warning for immutqble peer dependency
+- Fix yarn warning for immutable peer dependency
 
 #### 11.1.2
 
