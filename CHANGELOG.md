@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+#### 11.1.6
+
+- Fix deserialization of absolute URLs from markdown
+
 #### 11.1.5
 
 - Fix deserializing other marks around inline code in markdown
