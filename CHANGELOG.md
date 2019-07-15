@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+#### 11.1.8
+
+- Fix a bug where deserializing from markdown a heading containing rich content, like a link, would crash
+
 #### 11.1.7
 
 - Improve markdown serialization/deserialization by correctly parsing blockquotes and lists in custom blocks
