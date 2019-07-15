@@ -5,6 +5,10 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Unreleased
 
+#### 11.1.7
+
+- Improve markdown serialization/deserialization by correctly parsing blockquotes and lists in custom blocks
+
 #### 11.1.6
 
 - Fix deserialization of absolute URLs from markdown
