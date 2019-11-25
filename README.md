@@ -12,34 +12,48 @@
 $ npm i markup-it --save
 ```
 
+or
+
+```
+$ yarn add markup-it
+```
+
 ### Usage
 
 #### Parse markdown
 
 ```js
-const { State } = require('markup-it');
-const markdown = require('markup-it/lib/markdown');
+const { State, MarkdownParser } = require('markup-it');
 
-const state = State.create(markdown);
+const state = State.create(MarkdownParser);
 const document = state.deserializeToDocument('Hello **World**');
 ```
 
 #### Render document to HTML
 
 ```js
-const { State } = require('markup-it');
-const html = require('markup-it/lib/html');
+const { State, HTMLParser } = require('markup-it');
 
-const state = State.create(html);
+const state = State.create(HTMLParser);
 const str = state.serializeDocument(document);
 ```
 
 #### Render document to Markdown
 
 ```js
-const { State } = require('markup-it');
-const markdown = require('markup-it/lib/markdown');
+const { State, MarkdownParser } = require('markup-it');
 
 const state = State.create(markdown);
+const str = state.serializeDocument(document);
+```
+
+### ES6
+
+`markup-it` is [ESM](https://hacks.mozilla.org/2018/03/es-modules-a-cartoon-deep-dive/) compliant through the package.json `module` field, so you can safely use it with ES6 syntax for tree-shaking.
+
+```js
+import { State, HTMLParser } from 'markup-it';
+
+const state = State.create(HTMLParser);
 const str = state.serializeDocument(document);
 ```
