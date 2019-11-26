@@ -3,7 +3,11 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-### Unreleased
+#### 12.0.0
+
+- Compile as ES module
+- Drop support for Node 6 and lower
+- API changes since `markup-it` is now compiled as a single file (see README.md)
 
 #### 11.1.8
 
