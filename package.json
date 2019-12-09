@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "@gitbook/slate-hyperprint": "^2.3.0",
-    "detect-newline": "^3.1.0",
+    "detect-newline": "^2.1.0",
     "entities": "^2.0.0",
     "escape-string-regexp": "^2.0.0",
     "front-matter": "^3.0.2",
