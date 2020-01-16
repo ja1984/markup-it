@@ -132,8 +132,8 @@ const deserializePair = Deserializer().matchRegExp(
                     innerHtml
                 });
             }
-            // else parse inner HTML as Markdown
 
+            // else parse inner HTML as Markdown
             const isLink = tagName.toLowerCase() === 'a';
             const innerNodes = state
                 .setProp(isLink ? 'link' : 'html', state.depth)
