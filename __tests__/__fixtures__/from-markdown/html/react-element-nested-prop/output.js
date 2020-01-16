@@ -7,7 +7,7 @@ import h from '../../../hyperscript';
 export default (
     <document>
         <paragraph>Some content before</paragraph>
-        <paragraph>} type="info"></paragraph>
+        <paragraph>{'} type="info">'}</paragraph>
         <unordered_list>
             <list_item>
                 <unstyled>Item 1</unstyled>
