@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+#### 12.0.2
+
+- Fix a bug where inlining React Elements in props of another one in markdown made the deserialization crash
+
 #### 12.0.1
 
 - Revert publishing minified code
