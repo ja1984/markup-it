@@ -1,5 +1,6 @@
 // Config used for tests files
 module.exports = {
+    plugins: ['transform-object-rest-spread'],
     presets: [
         [
             '@babel/preset-env',

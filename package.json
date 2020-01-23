@@ -52,6 +52,7 @@
     "@gitbook/slate-hyperscript": "^4.0.0",
     "babel-eslint": "^8.0.2",
     "babel-jest": "^24.9.0",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "eslint": "^4.10.0",
     "eslint-config-gitbook": "^2.0.3",
     "eslint-import-resolver-babel-module": "^4.0.0",
@@ -60,6 +61,7 @@
     "jest": "^24.9.0",
     "prettier": "^1.13.3",
     "rollup": "^1.27.2",
+    "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {
