@@ -11,13 +11,12 @@ export default {
         },
         {
             file: pkg.module,
-            format: 'es',
-            plugins: [babel()],
+            format: 'es'
         }
     ],
     external: [
         ...Object.keys(pkg.dependencies || {}),
         ...Object.keys(pkg.peerDependencies || {})
     ],
-    plugins: [resolve()]
+    plugins: [resolve(), babel()]
 };
