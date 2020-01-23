@@ -25,5 +25,5 @@ module.exports = {
         ],
         '@babel/preset-react'
     ],
-    plugins: ['transform-object-rest-spread']
+    plugins: ['@babel/plugin-proposal-object-rest-spread']
 };
