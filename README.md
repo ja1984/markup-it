@@ -57,3 +57,13 @@ import { State, HTMLParser } from 'markup-it';
 const state = State.create(HTMLParser);
 const str = state.serializeDocument(document);
 ```
+
+### Testing
+
+There are many scripts available in the `/bin` folder to output an HTML or Markdown file to multiple formats (HTML, Hyperscript, JSON, Markdown, YAML).
+
+These scripts can be called with `babel-node`, for example:
+
+```
+babel-node bin/toJSON.js ./page.md
+```
