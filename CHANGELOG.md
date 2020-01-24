@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+#### 12.0.5
+
+- Fix problem with Edge because of `indent-string` using spread syntax
+
 #### 12.0.4
 
 - Fix build to be compatible with most browsers modern versions (including Edge that doesn't support object spread syntax)
