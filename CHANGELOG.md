@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+#### 12.0.4
+
+- Fix build to be compatible with most browsers modern versions (including Edge that doesn't support object spread syntax)
+
 #### 12.0.3
 
 - Fix deserialization of hash signs `#` at the end of titles in markdown 
