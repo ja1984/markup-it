@@ -3,6 +3,10 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
+#### 12.1.1
+
+- Markdown: Fix missing newline characters after serialized HTML table leading to invalid markdown
+
 #### 12.1.0
 
 - Gracefully handle front matter parsing in markdown. When front matter cannot be correctly parsed, it is now treated as normal text and deserialized as markdown instead of throwing an error
