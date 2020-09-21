@@ -2,7 +2,7 @@ import detectNewLine from 'detect-newline';
 import { Parser } from 'htmlparser2';
 import htmlclean from 'htmlclean';
 import { List, Stack, Set } from 'immutable';
-import { Block, Document, Inline, Mark, Text } from '@gitbook/slate';
+import { Block, Document, Inline, Mark, Text } from 'slate';
 import { BLOCKS, INLINES, MARKS, CONTAINERS, VOID, LEAFS } from '../constants';
 
 const INLINE_TAGS = {

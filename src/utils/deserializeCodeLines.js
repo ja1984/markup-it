@@ -1,5 +1,5 @@
 import splitLines from 'split-lines';
-import { Block, Text } from '@gitbook/slate';
+import { Block, Text } from 'slate';
 import { BLOCKS } from '../constants';
 
 /**

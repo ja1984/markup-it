@@ -1,5 +1,5 @@
 import uid from 'uid';
-import { Text, Mark } from '@gitbook/slate';
+import { Text, Mark } from 'slate';
 import { RuleFunction } from './rule-function';
 
 class Serializer extends RuleFunction {

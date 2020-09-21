@@ -1,6 +1,6 @@
 import { Parser } from 'htmlparser2';
 import { List } from 'immutable';
-import { Inline } from '@gitbook/slate';
+import { Inline } from 'slate';
 import { BLOCKS, INLINES } from '../../constants';
 import { Serializer, Deserializer, State } from '../../models';
 import { HTMLParser } from '../../html';

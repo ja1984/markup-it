@@ -41,15 +41,15 @@
   },
   "homepage": "https://github.com/GitbookIO/markup-it#readme",
   "peerDependencies": {
-    "@gitbook/slate": "^4.0.0",
+    "slate": "0.58.4",
     "immutable": "^3.0.0 || ^4.0.0-rc"
   },
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
     "@babel/preset-react": "^7.7.0",
-    "@gitbook/slate": "^4.0.0",
-    "@gitbook/slate-hyperscript": "^4.0.0",
+    "slate": "0.58.4",
+    "slate-hyperprint": "2.3.0",
     "babel-eslint": "^8.0.2",
     "babel-jest": "^24.9.0",
     "eslint": "^4.10.0",
@@ -64,7 +64,7 @@
     "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {
-    "@gitbook/slate-hyperprint": "^2.3.0",
+    "slate-hyperprint": "2.3.0",
     "detect-newline": "^2.1.0",
     "entities": "^2.0.0",
     "escape-string-regexp": "^2.0.0",

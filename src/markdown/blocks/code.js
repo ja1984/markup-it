@@ -1,5 +1,5 @@
 import trimNewlines from 'trim-newlines';
-import { Block } from '@gitbook/slate';
+import { Block } from 'slate';
 import { BLOCKS } from '../../constants';
 import { Serializer, Deserializer } from '../../models';
 import { deserializeCodeLines } from '../../utils';

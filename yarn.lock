@@ -792,16 +792,16 @@
     exec-sh "^0.3.2"
     minimist "^1.2.0"
 
-"@gitbook/slate-debug@^4.0.2":
+"slate-debug@^4.0.2":
   version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@gitbook/slate-debug/-/slate-debug-4.0.2.tgz#c1cb439a801de7aca97e82cb9392f14ce483a49b"
+  resolved "https://registry.yarnpkg.com/slate-debug/-/slate-debug-4.0.2.tgz#c1cb439a801de7aca97e82cb9392f14ce483a49b"
   integrity sha512-5L3SO8lA6qUxby98MVyMRDOqwMNvofHSG0YUwnzMPAwI154tnexxH3ETp3y5/sR4IVrwhSL1a2zXkCfu8I/I5A==
   dependencies:
     debug "^3.1.0"
 
-"@gitbook/slate-hyperprint@^2.3.0":
+"slate-hyperprint@^2.3.0":
   version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@gitbook/slate-hyperprint/-/slate-hyperprint-2.3.0.tgz#8ab71034095460d0e610fbf3b8b3a5ebec2e0f3b"
+  resolved "https://registry.yarnpkg.com/slate-hyperprint/-/slate-hyperprint-2.3.0.tgz#8ab71034095460d0e610fbf3b8b3a5ebec2e0f3b"
   integrity sha512-tj72PsJuO375U6VLSKPSxcWUrhXNpJf/U1IE/lFlXMFKLFPZ9DJINj+vEQ01ljKfzf8Jevn4GvTdjOFLIgCDCg==
   dependencies:
     indent-string "^3.2.0"
@@ -811,26 +811,26 @@
     prettier "1.13.6"
     stringify-object "^3.2.2"
 
-"@gitbook/slate-hyperscript@^4.0.0":
+"slate-hyperscript@^4.0.0":
   version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@gitbook/slate-hyperscript/-/slate-hyperscript-4.0.2.tgz#c308d451a69cb874e6df80371027e0ba0af59ec2"
+  resolved "https://registry.yarnpkg.com/slate-hyperscript/-/slate-hyperscript-4.0.2.tgz#c308d451a69cb874e6df80371027e0ba0af59ec2"
   integrity sha512-hc2MK/WMv3ikdX3ncFj7CsNt4wZXusXu4ZTiAdyR/b7zlKM+7Iw8M0xXWwun+v/frld/ybmEr2LWAMEKId4XOQ==
   dependencies:
     is-empty "^1.0.0"
     is-plain-object "^2.0.4"
 
-"@gitbook/slate-schema-violations@^4.0.2":
+"slate-schema-violations@^4.0.2":
   version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@gitbook/slate-schema-violations/-/slate-schema-violations-4.0.2.tgz#fb0931ddb9365cf0a6690cbc5d13c9416e38a87e"
+  resolved "https://registry.yarnpkg.com/slate-schema-violations/-/slate-schema-violations-4.0.2.tgz#fb0931ddb9365cf0a6690cbc5d13c9416e38a87e"
   integrity sha512-5ckxpHU0tA+dm+OpOZ5z5obnMDg2/TMFx1rWjcQj5SuDMEqpCDbscOsShm3KZwEu+KMMFRYsTvRIKRCZuAuKVw==
 
-"@gitbook/slate@^4.0.0":
+"slate@^4.0.0":
   version "4.0.2"
-  resolved "https://registry.yarnpkg.com/@gitbook/slate/-/slate-4.0.2.tgz#18a523936cab6b2ed3f54d7000c04124e0d0f7e7"
+  resolved "https://registry.yarnpkg.com/slate/-/slate-4.0.2.tgz#18a523936cab6b2ed3f54d7000c04124e0d0f7e7"
   integrity sha512-qbPIljoRu0S5nxtqDEozNgcanI43zRVsa2ayV4ORmxgLi7XdE61OqYWKh5NNIlqcWuuftZwPHhhoJUW4OpM2AQ==
   dependencies:
-    "@gitbook/slate-debug" "^4.0.2"
-    "@gitbook/slate-schema-violations" "^4.0.2"
+    "slate-debug" "^4.0.2"
+    "slate-schema-violations" "^4.0.2"
     debug "^3.1.0"
     direction "^0.1.5"
     esrever "^0.2.0"

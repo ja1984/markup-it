@@ -1,4 +1,4 @@
-import { Text } from '@gitbook/slate';
+import { Text } from 'slate';
 import { Serializer, State } from '../src';
 
 describe('Serializer', () => {

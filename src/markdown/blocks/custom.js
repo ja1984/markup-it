@@ -1,7 +1,7 @@
 import { List } from 'immutable';
 import warning from 'warning';
 import trimTrailingLines from 'trim-trailing-lines';
-import { Block } from '@gitbook/slate';
+import { Block } from 'slate';
 import { BLOCKS } from '../../constants';
 import { Serializer, Deserializer } from '../../models';
 import reBlock from '../re/block';

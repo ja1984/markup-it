@@ -1,4 +1,4 @@
-import { Block } from '@gitbook/slate';
+import { Block } from 'slate';
 import { State } from '../src';
 
 describe('State', () => {

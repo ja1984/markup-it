@@ -1,4 +1,4 @@
-import { Block, Document } from '@gitbook/slate';
+import { Block, Document } from 'slate';
 import { BLOCKS, TABLE_ALIGN } from '../../constants';
 import { Serializer, Deserializer, State } from '../../models';
 import reTable from '../re/table';

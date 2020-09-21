@@ -1,5 +1,5 @@
 import { Map } from 'immutable';
-import { Inline } from '@gitbook/slate';
+import { Inline } from 'slate';
 import { INLINES } from '../../constants';
 import { Serializer, Deserializer } from '../../models';
 import reInline from '../re/inline';

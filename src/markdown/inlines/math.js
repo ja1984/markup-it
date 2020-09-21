@@ -1,6 +1,6 @@
 import ltrim from 'ltrim';
 import rtrim from 'rtrim';
-import { Inline } from '@gitbook/slate';
+import { Inline } from 'slate';
 import { INLINES } from '../../constants';
 import { Serializer, Deserializer } from '../../models';
 import reInline from '../re/inline';

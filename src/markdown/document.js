@@ -1,4 +1,4 @@
-import { Document } from '@gitbook/slate';
+import { Document } from 'slate';
 import { safeDump as safeDumpYAML } from 'js-yaml';
 import fm from 'front-matter';
 import Immutable from 'immutable';

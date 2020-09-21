@@ -2,8 +2,8 @@
 /* eslint-disable import/no-dynamic-require */
 import fs from 'fs';
 import path from 'path';
-import { Value } from '@gitbook/slate';
-import hyperprint from '@gitbook/slate-hyperprint';
+import { Value } from 'slate';
+import hyperprint from 'slate-hyperprint';
 import trimTrailingLines from 'trim-trailing-lines';
 import { State, MarkdownParser, HTMLParser } from '../src/';
 import { unendingTags } from '../bin/unendingTags';

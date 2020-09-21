@@ -79,7 +79,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 #### 11.0.0
 
-[BREAKING] Now using @gitbook/slate as peer dependency
+[BREAKING] Now using slate as peer dependency
 
 ### 10.0.0
 

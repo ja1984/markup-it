@@ -1,4 +1,4 @@
-import { Document, Block, Inline, Text, Mark, Leaf } from '@gitbook/slate';
+import { Document, Block, Inline, Text, Mark, Leaf } from 'slate';
 
 export * from './constants';
 export * from './models';

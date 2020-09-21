@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 /* eslint-disable no-console */
-const { Value } = require('@gitbook/slate');
+const { Value } = require('slate');
 const { transform } = require('./helper');
 
 transform(document => {
