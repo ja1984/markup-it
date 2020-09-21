@@ -27,8 +27,6 @@ node_modules
 # Users Environment Variables
 .lock-wscript
 
-# Babel dist directory
-lib
 
 # Test file for dev
 test.md
